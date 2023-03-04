@@ -21,12 +21,10 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('admin/login', 'showLoginForm')->name('admin.login');
     Route::post('admin/login', 'login')->name('admin.login');
     Route::get('admin/logout', 'logout')->name('admin.logout');
-    // Route::post('/orders', 'store');
 });
 
 // Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
 
-
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
+Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.' ], function () {
+    Route::get('/', [App\Http\Controllers\Admin\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+});

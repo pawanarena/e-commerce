@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dca5685ffc756101c51b156b14af3d1a",
+    "content-hash": "e7a88f183ea1aa5669dd3961378d27e5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1085,6 +1085,64 @@
             "time": "2023-02-03T16:04:05+00:00"
         },
         {
+            "name": "jsdecena/baserepo",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jsdecena/baserepo.git",
+                "reference": "681e39da1b3d6e89f761d23398816050daedab13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jsdecena/baserepo/zipball/681e39da1b3d6e89f761d23398816050daedab13",
+                "reference": "681e39da1b3d6e89f761d23398816050daedab13",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "league/fractal": "^0.20.1",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.3",
+                "orchestra/testbench": "^7.4",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jsdecena\\Baserepo\\BaseRepositoryProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jsdecena\\Baserepo\\": "src/"
+                },
+                "classmap": [
+                    "tests/database/seeds",
+                    "tests/database/factories"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Simons Decena",
+                    "email": "jeff.decena@yahoo.com"
+                }
+            ],
+            "description": "Base repository",
+            "support": {
+                "issues": "https://github.com/jsdecena/baserepo/issues",
+                "source": "https://github.com/jsdecena/baserepo/tree/v2.0.0"
+            },
+            "time": "2022-05-03T07:54:19+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v10.2.0",
             "source": {
@@ -1817,6 +1875,76 @@
                 }
             ],
             "time": "2023-02-18T15:32:41+00:00"
+        },
+        {
+            "name": "league/fractal",
+            "version": "0.20.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "8b9d39b67624db9195c06f9c1ffd0355151eaf62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/8b9d39b67624db9195c06f9c1ffd0355151eaf62",
+                "reference": "8b9d39b67624db9195c06f9c1ffd0355151eaf62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "^1.3",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "~3.4",
+                "vimeo/psalm": "^4.22",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.20.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/fractal/issues",
+                "source": "https://github.com/thephpleague/fractal/tree/0.20.1"
+            },
+            "time": "2022-04-11T12:47:17+00:00"
         },
         {
             "name": "league/mime-type-detection",
