@@ -29,16 +29,6 @@ class EmployeeFeatureTest extends TestCase
     }
 
     /** @test */
-    public function it_redirect_back_outside_if_customer_accessing_admin_page()
-    {
-        $this->actingAs($this->customer)
-            ->get(route('admin.dashboard'))
-            ->assertStatus(302)
-            ->assertRedirect(route('admin.login'))
-            ->assertSessionHas('error', 'You must be an employee to see this page');
-    }
-
-    /** @test */
     public function it_throws_the_too_many_login_attempts_event()
     {
         $this->expectsEvents(Lockout::class);

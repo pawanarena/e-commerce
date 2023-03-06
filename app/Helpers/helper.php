@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shehbaz
- * Date: 1/21/19
- * Time: 12:19 PM
- */
-
 
 use Illuminate\Support\Facades\Validator;
 
@@ -17,22 +10,7 @@ if (!function_exists("helper_test")) {
 }
 
 if (!function_exists("populate_breadcrumb")) {
-    /**
-     * popular data to layouts.admin.app when send from controller
-     *
-     *<h1> controller example </h1>
-     * <pre>
-     *  $data = [
-     * ["name" => "Dashboard1", "url" => route("admin.dashboard")],
-     * ["name" => "Products1", "url" => request()->fullUrl()]
-     * ];
-     *
-     * populate_breadcrumb($data)
-     * </pre>
-     *
-     * @param $data
-     * @return void
-     */
+
     function populate_breadcrumb($data)
     {
         $validated = validate_breadcrumb($data);
@@ -54,11 +32,6 @@ if (!function_exists("populate_breadcrumb")) {
 
 if (!function_exists('validate_breadcrumb')) {
 
-    /**
-     * validate breadcrumb data
-     * @param $data
-     * @return array
-     */
     function validate_breadcrumb($data)
     {
         $validated = false;
@@ -72,7 +45,6 @@ if (!function_exists('validate_breadcrumb')) {
             $validator = Validator::make($item, [
                 'name' => 'required',
                 'url' => "required|url",
-//                "icon" => ""
             ], $messages);
             if ($validator->fails()) {
                 $validated = false;

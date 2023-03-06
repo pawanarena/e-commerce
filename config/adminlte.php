@@ -318,7 +318,7 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        ['header' => 'account_settings'],
+        ['header' => 'config_setting'],
         // [
         //     'text' => 'profile',
         //     'url'  => 'admin/settings',
@@ -330,37 +330,33 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text'    => 'Products',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Employees',
+            'icon'    => 'fa fa-star',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Employe',
                     'url'  => '#',
                 ],
-                // [
-                //     'text'    => 'level_one',
-                //     'url'     => '#',
-                //     'submenu' => [
-                //         [
-                //             'text' => 'level_two',
-                //             'url'  => '#',
-                //         ],
-                //         [
-                //             'text'    => 'level_two',
-                //             'url'     => '#',
-                //             'submenu' => [
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //             ],
-                //         ],
-                //     ],
-                // ],
+                [
+                    'text'    => 'Role',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'Role List',
+                            'url'  => 'admin/roles',
+                        ],
+                        [
+                            'text'    => 'Permission',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'Permission List',
+                                    'url'  => 'admin/permissions',
+                                ]
+                            ],
+                        ],
+                    ],
+                ],
                 // [
                 //     'text' => 'level_one',
                 //     'url'  => '#',

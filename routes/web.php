@@ -27,4 +27,12 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.' ], function () {
     Route::get('/', [App\Http\Controllers\Admin\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+
+    
+    Route::resource('employees', App\Http\Controllers\Admin\Employees\EmployeeController::class);
+    Route::get('employees/{id}/profile', [App\Http\Controllers\Admin\Employees\EmployeeController::class,'getProfile'])->name('employee.profile');
+    Route::put('employees/{id}/profile', [App\Http\Controllers\Admin\Employees\EmployeeController::class,'updateProfile'])->name('employee.profile.update');
+    Route::resource('roles', App\Http\Controllers\Admin\Roles\RoleController::class);
+    Route::resource('permissions', App\Http\Controllers\Admin\Permissions\PermissionController::class);
+
 });
