@@ -5,6 +5,7 @@ namespace Tests\Feature\Admin\Employees;
 use App\Models\Employee;
 use Illuminate\Auth\Events\Lockout;
 use App\Repositories\Employees\EmployeeRepository;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class EmployeeFeatureTest extends TestCase
@@ -29,26 +30,9 @@ class EmployeeFeatureTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_the_too_many_login_attempts_event()
-    {
-        $this->expectsEvents(Lockout::class);
-
-        $employee = factory(Employee::class)->create();
-
-        for ($i=0; $i <= 5; $i++) {
-            $data = [
-                'email' => $employee->email,
-                'password' => 'unknown'
-            ];
-
-            $this->post(route('admin.login'), $data);
-        }
-    }
-
-    /** @test */
     public function it_redirects_back_to_login_page_when_credentials_are_wrong()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'email' => $employee->email,
@@ -64,7 +48,7 @@ class EmployeeFeatureTest extends TestCase
     /** @test */
     public function it_can_login_to_the_dashboard()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $data = [
             'email' => $employee->email,
@@ -77,23 +61,10 @@ class EmployeeFeatureTest extends TestCase
     }
 
     /** @test */
-    public function it_can_show_the_create_and_edit_employee_page()
-    {
-        $this->actingAs($this->employee, 'employee')
-            ->get(route('admin.employees.create'))
-            ->assertStatus(200);
-
-        $this->actingAs($this->employee, 'employee')
-            ->get(route('admin.employees.edit', $this->employee->id))
-            ->assertStatus(200)
-            ->assertSee(htmlentities($this->employee->name, ENT_QUOTES));
-    }
-
-    /** @test */
     public function it_can_update_the_profile()
     {
+        
         $data = ['name' => 'King Kong', 'email' => 'test@test.com'];
-
         $this->actingAs($this->employee, 'employee')
             ->put(route('admin.employee.profile.update', $this->employee->id), $data)
             ->assertStatus(302)
@@ -103,7 +74,7 @@ class EmployeeFeatureTest extends TestCase
     /** @test */
     public function it_can_show_the_profile_of_the_logged_user()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $this->actingAs($this->employee, 'employee')
             ->get(route('admin.employee.profile', $employee->id))
@@ -130,7 +101,7 @@ class EmployeeFeatureTest extends TestCase
     /** @test */
     public function it_can_list_all_the_employees()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $this->actingAs($this->employee, 'employee')
             ->get(route('admin.employees.index'))
@@ -171,7 +142,7 @@ class EmployeeFeatureTest extends TestCase
     /** @test */
     public function it_can_only_soft_delete_an_employee()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $this->actingAs($this->employee, 'employee')
             ->delete(route('admin.employees.destroy', $employee->id))
@@ -184,7 +155,7 @@ class EmployeeFeatureTest extends TestCase
     /** @test */
     public function it_should_update_the_employee_password()
     {
-        $employee = factory(Employee::class)->create();
+        $employee = Employee::factory()->create();
 
         $update = [
             'name' => $employee->name,

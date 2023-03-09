@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EmployeeRepository extends BaseRepository implements EmployeeRepositoryInterface
 {
@@ -61,7 +62,7 @@ class EmployeeRepository extends BaseRepository implements EmployeeRepositoryInt
         try {
             return $this->findOneOrFail($id);
         } catch (ModelNotFoundException $e) {
-            throw new \Exception("Employee not found.");
+            throw new NotFoundHttpException($e);
         }
     }
 

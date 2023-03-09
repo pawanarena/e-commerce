@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Employees;
 
 use App\Http\Requests\Employees\CreateEmployeeRequest;
 use App\Http\Requests\Employees\UpdateEmployeeRequest;
 use App\Repositories\Employees\EmployeeRepository;
 use App\Repositories\Employees\Interfaces\EmployeeRepositoryInterface;
-use App\Repositories\Roles\RoleRepositoryInterface;
+use App\Repositories\Roles\Interfaces\RoleRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -92,8 +92,8 @@ class EmployeeController extends Controller
     {
         $employee = $this->employeeRepo->findEmployeeById($id);
         $roles = $this->roleRepo->listRoles('created_at', 'desc');
+       
         $isCurrentUser = $this->employeeRepo->isAuthUser($employee);
-
         return view(
             'admin.employees.edit',
             [

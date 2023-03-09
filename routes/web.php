@@ -36,3 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.
     Route::resource('permissions', App\Http\Controllers\Admin\Permissions\PermissionController::class);
 
 });
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');

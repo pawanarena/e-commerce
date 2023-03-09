@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Roles;
+namespace App\Repositories\Roles\Interfaces;
 
 use Jsdecena\Baserepo\BaseRepositoryInterface;
 use App\Models\Permission;

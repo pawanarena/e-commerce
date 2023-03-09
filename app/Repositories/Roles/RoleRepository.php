@@ -2,8 +2,10 @@
 namespace App\Repositories\Roles;
 
 use Jsdecena\Baserepo\BaseRepository;
+use Illuminate\Support\Facades\Log;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Repositories\Roles\Interfaces\RoleRepositoryInterface;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 
@@ -37,7 +39,7 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
             $role->save();
             return $role;
         } catch (QueryException $e) {
-            return 'Failed to create user: ' . $e->getMessage();
+            throw new \Exception($e);
         }
     }
 
@@ -51,7 +53,7 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
         try {
             return $this->findOneOrFail($id);
         } catch (QueryException $e) {
-            return 'Failed to find user: ' . $e->getMessage();
+            throw new \Exception($e);
         }
     }
 
@@ -63,10 +65,11 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
      */
     public function updateRole(array $data) : bool
     {
+       
         try {
             return $this->update($data);
         } catch (QueryException $e) {
-            return 'Failed to update user: ' . $e->getMessage();
+            throw new \Exception($e);
         }
     }
 
@@ -79,7 +82,7 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
         try {
             return $this->delete();
         } catch (QueryException $e) {
-            return 'Failed to delete user: ' . $e->getMessage();
+            throw new \Exception($e);
         }
     }
 

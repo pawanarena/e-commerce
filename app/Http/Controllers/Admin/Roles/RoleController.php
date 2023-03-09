@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin\Roles;
 use App\Http\Controllers\Controller;
 use App\Repositories\Permissions\Interfaces\PermissionRepositoryInterface;
 use App\Repositories\Roles\RoleRepository;
-use App\Repositories\Roles\RoleRepositoryInterface;
-use App\Requests\Roles\CreateRoleRequest;
-use App\Requests\Roles\UpdateRoleRequest;
+use App\Repositories\Roles\Interfaces\RoleRepositoryInterface;
+use App\Http\Requests\Roles\CreateRoleRequest;
+use App\Http\Requests\Roles\UpdateRoleRequest;
 
 class RoleController extends Controller
 {

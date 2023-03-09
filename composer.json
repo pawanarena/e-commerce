@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "jeroennoten/laravel-adminlte": "^3.8",
         "jsdecena/baserepo": "^2.0",
+        "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",

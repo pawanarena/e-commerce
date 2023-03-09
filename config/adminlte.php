@@ -338,22 +338,40 @@ return [
                     'url'  => '#',
                 ],
                 [
+                    'text'    => 'Employe',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'List Employe',
+                            'url'  => 'admin/employees',
+                        ],
+                        [
+                            'text' => 'Add Employe',
+                            'url'  => 'admin/employees/create',
+                        ],
+                    ],
+                ],
+                [
                     'text'    => 'Role',
                     'url'     => '#',
                     'submenu' => [
                         [
-                            'text' => 'Role List',
+                            'text' => 'List Role',
                             'url'  => 'admin/roles',
                         ],
                         [
-                            'text'    => 'Permission',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Permission List',
-                                    'url'  => 'admin/permissions',
-                                ]
-                            ],
+                            'text' => 'Add Role',
+                            'url'  => 'admin/roles/create',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Permission',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'List Permission',
+                            'url'  => 'admin/permissions',
                         ],
                     ],
                 ],

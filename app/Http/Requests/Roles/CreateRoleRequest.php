@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Requests\Roles;
+namespace App\Http\Requests\Roles;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,7 @@ class CreateRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:roles']
+            'display_name' => ['required', 'unique:roles']
         ];
     }
 }

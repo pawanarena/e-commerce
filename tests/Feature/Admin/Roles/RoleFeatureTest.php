@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Admin\Roles;
 
-use App\Shop\Roles\Role;
+use App\Models\Role;
 use Tests\TestCase;
 
 class RoleFeatureTest extends TestCase
@@ -22,8 +22,7 @@ class RoleFeatureTest extends TestCase
     /** @test */
     public function it_can_edit_the_role()
     {
-        $role = factory(Role::class)->create();
-
+        $role =  Role::factory()->create();
         $data = [
             'name' => 'superadministrator',
             'display_name' => 'Super Administrator',
@@ -45,7 +44,7 @@ class RoleFeatureTest extends TestCase
             'description' => 'Super admin user'
         ];
 
-        $role = factory(Role::class)->create($data);
+        $role = Role::factory()->create($data);
 
         $this->actingAs($this->employee, 'employee')
             ->get(route('admin.roles.edit', $role->id))
