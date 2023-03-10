@@ -27,7 +27,6 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.' ], function () {
     Route::get('/', [App\Http\Controllers\Admin\Dashboard\DashboardController::class, 'index'])->name('dashboard');
-
     /* Employees Roles and Permission */
     Route::resource('employees', App\Http\Controllers\Admin\Employees\EmployeeController::class);
     Route::get('employees/{id}/profile', [App\Http\Controllers\Admin\Employees\EmployeeController::class,'getProfile'])->name('employee.profile');
@@ -37,6 +36,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.
     /* Categories */
     Route::resource('categories', App\Http\Controllers\Admin\Categories\CategoryController::class);
     Route::get('remove-image-category', [App\Http\Controllers\Admin\Categories\CategoryController::class,'removeImage'])->name('category.remove.image');
+    /* Attributes */
+    Route::resource('attributes',  App\Http\Controllers\Admin\Attributes\AttributeController::class);
+    Route::resource('attributes.values', App\Http\Controllers\Admin\Attributes\AttributeValueController::class);
+     /* Brands */
+    Route::resource('brands', App\Http\Controllers\Admin\Brands\BrandController::class);
 
 });
 

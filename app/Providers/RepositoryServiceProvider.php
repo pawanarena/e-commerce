@@ -11,6 +11,14 @@ use App\Repositories\Roles\RoleRepository;
 use App\Repositories\Roles\Interfaces\RoleRepositoryInterface;
 use App\Repositories\Categories\CategoryRepository;
 use App\Repositories\Categories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Attributes\AttributeRepository;
+use App\Repositories\Attributes\Interfaces\AttributeRepositoryInterface;
+use App\Repositories\AttributeValues\AttributeValueRepository;
+use App\Repositories\AttributeValues\Interfaces\AttributeValueRepositoryInterface;
+use App\Repositories\ProductAttributes\ProductAttributeRepository;
+use App\Repositories\ProductAttributes\Interfaces\ProductAttributeRepositoryInterface;
+use App\Repositories\Brands\BrandRepository;
+use App\Repositories\Brands\Interfaces\BrandRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -35,6 +43,26 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CategoryRepositoryInterface::class,
             CategoryRepository::class
+        );
+
+        $this->app->bind(
+            AttributeRepositoryInterface::class,
+            AttributeRepository::class
+        );
+
+        $this->app->bind(
+            AttributeValueRepositoryInterface::class,
+            AttributeValueRepository::class
+        );
+
+        $this->app->bind(
+            ProductAttributeRepositoryInterface::class,
+            ProductAttributeRepository::class
+        );
+
+        $this->app->bind(
+            BrandRepositoryInterface::class,
+            BrandRepository::class
         );
     }
 }
