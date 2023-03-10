@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Repositories\Roles\RoleRepository;
 use App\Models\Employee;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Role;
 use Faker\Factory as Faker;
 
@@ -18,6 +20,8 @@ abstract class TestCase extends BaseTestCase
     protected $faker;
     protected $employee;
     protected $role;
+    protected $category;
+    protected $product;
 
     /**
      * Set up the test
@@ -34,6 +38,9 @@ abstract class TestCase extends BaseTestCase
         $roleRepo = new RoleRepository(new Role);
         $admin = $roleRepo->createRole($adminData);
         $this->role = $admin;
+
+        $this->category = Category::factory()->create();
+        $this->product = Product::factory()->create();
     }
     public function tearDown(): void
     {

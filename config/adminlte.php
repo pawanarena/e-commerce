@@ -334,10 +334,6 @@ return [
             'icon'    => 'fa fa-star',
             'submenu' => [
                 [
-                    'text' => 'Employe',
-                    'url'  => '#',
-                ],
-                [
                     'text'    => 'Employe',
                     'url'     => '#',
                     'submenu' => [
@@ -375,10 +371,21 @@ return [
                         ],
                     ],
                 ],
-                // [
-                //     'text' => 'level_one',
-                //     'url'  => '#',
-                // ],
+            ],
+        ],
+        ['header' => 'sell'],
+        [
+            'text'    => 'Category',
+            'icon'    => 'fa fa-star',
+            'submenu' => [
+                [
+                    'text'    => 'List Category',
+                    'url'     => 'admin/categories',
+                ],
+                [
+                    'text'    => 'Create Category',
+                    'url'     => 'admin/categories/create',
+                ],
             ],
         ],
         // ['header' => 'labels'],
