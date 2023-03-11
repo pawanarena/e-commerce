@@ -300,35 +300,64 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'manage-blog',
-        // ],
-        // [
-        //     'text'        => 'pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 4,
-        //     'label_color' => 'success',
-        // ],
+        ['header' => 'sell'],
+        [
+            'text'    => 'Products',
+            'icon'    => 'fa fa-star',
+            'submenu' => [
+                [
+                    'text'    => 'List Products',
+                    'url'     => 'admin/products',
+                ],
+                [
+                    'text'    => 'Create Product',
+                    'url'     => 'admin/products/create',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Attributes',
+            'icon'    => 'fa fa-star',
+            'submenu' => [
+                [
+                    'text'    => 'List Attributes',
+                    'url'     => 'admin/attributes',
+                ],
+                [
+                    'text'    => 'Create Attribute',
+                    'url'     => 'admin/attributes/create',
+                ],
+            ]
+        ],
+        [
+            'text'    => 'Brands',
+            'icon'    => 'fa fa-star',
+            'submenu' => [
+                [
+                    'text'    => 'List Brands',
+                    'url'     => 'admin/brands',
+                ],
+                [
+                    'text'    => 'Create Brands',
+                    'url'     => 'admin/brands/create',
+                ],
+            ]
+        ],
+        [
+            'text'    => 'Category',
+            'icon'    => 'fa fa-star',
+            'submenu' => [
+                [
+                    'text'    => 'List Category',
+                    'url'     => 'admin/categories',
+                ],
+                [
+                    'text'    => 'Create Category',
+                    'url'     => 'admin/categories/create',
+                ],
+            ],
+        ],
         ['header' => 'config_setting'],
-        // [
-        //     'text' => 'profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-user',
-        // ],
-        // [
-        //     'text' => 'change_password',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
         [
             'text'    => 'Employees',
             'icon'    => 'fa fa-star',
@@ -370,21 +399,6 @@ return [
                             'url'  => 'admin/permissions',
                         ],
                     ],
-                ],
-            ],
-        ],
-        ['header' => 'sell'],
-        [
-            'text'    => 'Category',
-            'icon'    => 'fa fa-star',
-            'submenu' => [
-                [
-                    'text'    => 'List Category',
-                    'url'     => 'admin/categories',
-                ],
-                [
-                    'text'    => 'Create Category',
-                    'url'     => 'admin/categories/create',
                 ],
             ],
         ],
