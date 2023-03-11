@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-// use App\Shop\Brands\Brand;
+use App\Models\Brand;
 use App\Models\Category;
-// use App\Shop\ProductAttributes\ProductAttribute;
-// use App\Shop\ProductImages\ProductImage;
+use App\Models\ProductAttribute;
+use App\Models\ProductImage;
 // use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-// use Nicolaslopezj\Searchable\SearchableTrait;
+use App\Traits\SearchableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory;
-    // use SearchableTrait;
+    use HasFactory, SearchableTrait;
 
     public const MASS_UNIT = [
         'OUNCES' => 'oz',
@@ -32,17 +31,17 @@ class Product extends Model
         'YARD' => 'yd'
     ];
 
-    // /**
-    //  * Searchable rules.
-    //  *
-    //  * @var array
-    //  */
-    // protected $searchable = [
-    //     'columns' => [
-    //         'products.name' => 10,
-    //         'products.description' => 5
-    //     ]
-    // ];
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'products.name' => 10,
+            'products.description' => 5
+        ]
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -117,10 +116,10 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    // public function images()
-    // {
-    //     return $this->hasMany(ProductImage::class);
-    // }
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 
     /**
      * @param string $term
@@ -134,16 +133,16 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    // public function attributes()
-    // {
-    //     return $this->hasMany(ProductAttribute::class);
-    // }
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
 
-    // /**
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    //  */
-    // public function brand()
-    // {
-    //     return $this->belongsTo(Brand::class);
-    // }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

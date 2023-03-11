@@ -19,6 +19,8 @@ use App\Repositories\ProductAttributes\ProductAttributeRepository;
 use App\Repositories\ProductAttributes\Interfaces\ProductAttributeRepositoryInterface;
 use App\Repositories\Brands\BrandRepository;
 use App\Repositories\Brands\Interfaces\BrandRepositoryInterface;
+use App\Repositories\Products\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Products\ProductRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -63,6 +65,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             BrandRepositoryInterface::class,
             BrandRepository::class
+        );
+
+        $this->app->bind(
+            ProductRepositoryInterface::class,
+            ProductRepository::class
         );
     }
 }

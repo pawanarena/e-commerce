@@ -41,6 +41,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.
     Route::resource('attributes.values', App\Http\Controllers\Admin\Attributes\AttributeValueController::class);
      /* Brands */
     Route::resource('brands', App\Http\Controllers\Admin\Brands\BrandController::class);
+    /* Product */
+    Route::resource('products', App\Http\Controllers\Admin\Products\ProductController::class);
+    Route::controller(App\Http\Controllers\Admin\Products\ProductController::class)->group(function () {
+        Route::get('remove-image-product', 'removeImage')->name('product.remove.image');
+        Route::get('remove-image-thumb', 'removeThumbnail')->name('product.remove.thumb');
+    });
 
 });
 

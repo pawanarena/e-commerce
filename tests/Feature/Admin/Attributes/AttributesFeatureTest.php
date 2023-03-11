@@ -13,68 +13,68 @@ use Tests\TestCase;
 class AttributesFeatureTest extends TestCase
 {
     /** @test */
-    // public function it_can_update_product_attribute_combination()
-    // {
-    //     $product = Product::factory()->create();
-    //     $attributeValue1 = new AttributeValue(['value' => 'small']);
-    //     $attributeValueRepo1 = new AttributeValueRepository($attributeValue1);
+    public function it_can_update_product_attribute_combination()
+    {
+        $product = Product::factory()->create();
+        $attributeValue1 = new AttributeValue(['value' => 'small']);
+        $attributeValueRepo1 = new AttributeValueRepository($attributeValue1);
 
-    //     $attribute1 = Attribute::factory()->create(['name' => 'Sizes']);
-    //     $createdValue = $attributeValueRepo1->associateToAttribute($attribute1);
+        $attribute1 = Attribute::factory()->create(['name' => 'Sizes']);
+        $createdValue = $attributeValueRepo1->associateToAttribute($attribute1);
 
-    //     $data = [
-    //         'price' => 0,
-    //         'quantity' => 0,
-    //         'sku' => $this->faker->uuid,
-    //         'name' => 'test',
-    //         'productAttributeQuantity' => 1,
-    //         'productAttributePrice' => 2.45,
-    //         'attributeValue' => [$createdValue->id],
-    //         'combination' => 1
-    //     ];
+        $data = [
+            'price' => 0,
+            'quantity' => 0,
+            'sku' => $this->faker->uuid,
+            'name' => 'test',
+            'productAttributeQuantity' => 1,
+            'productAttributePrice' => 2.45,
+            'attributeValue' => [$createdValue->id],
+            'combination' => 1
+        ];
 
-    //     $this
-    //         ->actingAs($this->employee, 'employee')
-    //         ->put(route('admin.products.update', $product->id), $data)
-    //         ->assertStatus(302)
-    //         ->assertRedirect(route('admin.products.edit', [$product->id, 'combination' => 1]))
-    //         ->assertSessionHas('message', 'Attribute combination created successful');
-    // }
+        $this
+            ->actingAs($this->employee, 'employee')
+            ->put(route('admin.products.update', $product->id), $data)
+            ->assertStatus(302)
+            ->assertRedirect(route('admin.products.edit', [$product->id, 'combination' => 1]))
+            ->assertSessionHas('message', 'Attribute combination created successful');
+    }
 
     /** @test */
-    // public function it_can_detach_the_attribute_from_the_product_and_delete_it()
-    // {
-    //     $attributeValue1 = new AttributeValue(['value' => 'small']);
-    //     $attributeValueRepo1 = new AttributeValueRepository($attributeValue1);
+    public function it_can_detach_the_attribute_from_the_product_and_delete_it()
+    {
+        $attributeValue1 = new AttributeValue(['value' => 'small']);
+        $attributeValueRepo1 = new AttributeValueRepository($attributeValue1);
 
-    //     $attribute1 = Attribute::factory()->create(['name' => 'Sizes']);
-    //     $createdValue1 = $attributeValueRepo1->associateToAttribute($attribute1);
+        $attribute1 = Attribute::factory()->create(['name' => 'Sizes']);
+        $createdValue1 = $attributeValueRepo1->associateToAttribute($attribute1);
 
-    //     $attributeValue2 = new AttributeValue(['value' => 'red']);
-    //     $attributeValueRepo2 = new AttributeValueRepository($attributeValue2);
+        $attributeValue2 = new AttributeValue(['value' => 'red']);
+        $attributeValueRepo2 = new AttributeValueRepository($attributeValue2);
 
-    //     $attribute2 = Attribute::factory()->create(['name' => 'Colors']);
-    //     $createdValue2 = $attributeValueRepo2->associateToAttribute($attribute2);
+        $attribute2 = Attribute::factory()->create(['name' => 'Colors']);
+        $createdValue2 = $attributeValueRepo2->associateToAttribute($attribute2);
 
-    //     $data = [
-    //         'quantity' => 2,
-    //         'price' => 2.50
-    //     ];
+        $data = [
+            'quantity' => 2,
+            'price' => 2.50
+        ];
 
-    //     $productAttribute = new ProductAttribute($data);
-    //     $product = Product::factory()->create();
+        $productAttribute = new ProductAttribute($data);
+        $product = Product::factory()->create();
 
-    //     $productRepo = new ProductRepository($product);
-    //     $created = $productRepo->saveProductAttributes($productAttribute);
-    //     $productRepo->saveCombination($created, $createdValue1, $createdValue2);
+        $productRepo = new ProductRepository($product);
+        $created = $productRepo->saveProductAttributes($productAttribute);
+        $productRepo->saveCombination($created, $createdValue1, $createdValue2);
 
-    //     $this
-    //         ->actingAs($this->employee, 'employee')
-    //         ->get(route('admin.products.edit', [$product->id, 'delete' => 1, 'pa' => $created->id]))
-    //         ->assertStatus(302)
-    //         ->assertRedirect(route('admin.products.edit', [$product->id, 'combination' => 1]))
-    //         ->assertSessionHas('message', 'Delete successful');
-    // }
+        $this
+            ->actingAs($this->employee, 'employee')
+            ->get(route('admin.products.edit', [$product->id, 'delete' => 1, 'pa' => $created->id]))
+            ->assertStatus(302)
+            ->assertRedirect(route('admin.products.edit', [$product->id, 'combination' => 1]))
+            ->assertSessionHas('message', 'Delete successful');
+    }
 
     /** @test */
     public function it_error_when_the_attribute_is_not_found()
