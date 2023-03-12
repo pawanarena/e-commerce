@@ -21,6 +21,16 @@ use App\Repositories\Brands\BrandRepository;
 use App\Repositories\Brands\Interfaces\BrandRepositoryInterface;
 use App\Repositories\Products\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Products\ProductRepository;
+use App\Repositories\Countries\CountryRepository;
+use App\Repositories\Countries\Interfaces\CountryRepositoryInterface;
+use App\Repositories\Provinces\ProvinceRepository;
+use App\Repositories\Provinces\Interfaces\ProvinceRepositoryInterface;
+use App\Repositories\Cities\CityRepository;
+use App\Repositories\Cities\Interfaces\CityRepositoryInterface;
+use App\Repositories\Addresses\AddressRepository;
+use App\Repositories\Addresses\Interfaces\AddressRepositoryInterface;
+use App\Repositories\Customers\CustomerRepository;
+use App\Repositories\Customers\Interfaces\CustomerRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -70,6 +80,31 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductRepositoryInterface::class,
             ProductRepository::class
+        );
+
+        $this->app->bind(
+            CountryRepositoryInterface::class,
+            CountryRepository::class
+        );
+        
+        $this->app->bind(
+            ProvinceRepositoryInterface::class,
+            ProvinceRepository::class
+        );
+
+        $this->app->bind(
+            CityRepositoryInterface::class,
+            CityRepository::class
+        );
+
+        $this->app->bind(
+            AddressRepositoryInterface::class,
+            AddressRepository::class
+        );
+
+        $this->app->bind(
+            CustomerRepositoryInterface::class,
+            CustomerRepository::class
         );
     }
 }

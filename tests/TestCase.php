@@ -11,6 +11,7 @@ use App\Models\Employee;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Role;
+use App\Models\Customer;
 use Faker\Factory as Faker;
 
 abstract class TestCase extends BaseTestCase
@@ -22,6 +23,7 @@ abstract class TestCase extends BaseTestCase
     protected $role;
     protected $category;
     protected $product;
+    protected $customer;
 
     /**
      * Set up the test
@@ -41,6 +43,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->category = Category::factory()->create();
         $this->product = Product::factory()->create();
+        $this->customer = Customer::factory()->create();
     }
     public function tearDown(): void
     {

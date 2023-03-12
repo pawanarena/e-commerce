@@ -48,6 +48,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.
         Route::get('remove-image-thumb', 'removeThumbnail')->name('product.remove.thumb');
     });
 
+    Route::resource('addresses', App\Http\Controllers\Admin\Addresses\AddressController::class);
+    Route::resource('countries', App\Http\Controllers\Admin\Countries\CountryController::class);
+    Route::resource('countries.provinces', App\Http\Controllers\Admin\Provinces\ProvinceController::class);
+    Route::resource('countries.provinces.cities', App\Http\Controllers\Admin\Cities\CityController::class);
+
+    Route::resource('customers', App\Http\Controllers\Admin\Customers\CustomerController::class);
+    Route::resource('customers.addresses', App\Http\Controllers\Admin\Customers\CustomerAddressController::class);
+
+
 });
 
 Route::get('/', function () {

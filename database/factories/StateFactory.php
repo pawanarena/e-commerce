@@ -4,11 +4,12 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Country;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\State>
  */
-class RoleFactory extends Factory
+class StateFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +18,11 @@ class RoleFactory extends Factory
      */
     public function definition(): array
     {
+        $country = Country::factory()->create();
         return [
-            'name' => fake()->unique()->word,
-            'display_name' => '',
-            'description' => ''
+            'state' => fake()->city,
+            'state_code' => fake()->word,
+            'country_id' => $country->id
         ];
     }
 }
